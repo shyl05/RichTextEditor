@@ -1,0 +1,28 @@
+services:
+  mymongodb:
+    image: "mongo"
+    ports:
+      - "27017:27017"
+  express-server:
+    build:
+      context: ./draftjs-express
+    ports:
+      - "7000:7000"
+    container_name: server
+    depends_on:
+      - mymongodb
+    volumes:
+       - ./draftjs-express:/usr/src/RichtextExample/draftjs-express
+       - /usr/src/RichtextExample/draftjs-express/node_modules
+  react-client:
+    build:
+      context: ./draftjs-example
+    ports:
+      - "3000:3000"
+    container_name: client
+    depends_on:
+      - express-server
+    stdin_open: true
+    volumes:
+       - ./draftjs-example:/usr/src/RichtextExample/draftjs-example
+       - /usr/src/RichtextExample/draftjs-example/node_modules
