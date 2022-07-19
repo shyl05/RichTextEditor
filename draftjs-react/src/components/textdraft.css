@@ -1,0 +1,19 @@
+.editorComponent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.submitbtn{
+    height: 40px;
+    width: 100px;
+    color: white;
+    background-color: black;
+}
+
+.submitbtn:hover{
+    color:black;
+    background-color:white;
+}
